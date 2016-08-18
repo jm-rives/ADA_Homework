@@ -1,0 +1,39 @@
+TODO 
+[] Choose ASCII art
+[x] Choose Code Structure
+
+
+Primary Requirements
+[x] one letter at a time
+  [x] use puts statement to elict the letter guess
+  [x] ERROR Handle that guess check that the've only done that
+  [x] print out dummy array of underscores
+  [x] undeerscore array length should equal word length array
+  [x] is user guess matches ANY letter in the word array
+     print that letter to the screen
+
+   
+  [x] underscore will be replaced by letter of the same index
+  
+[] display
+  [] use loop to redraw ASCII art after each correct or incorrect guess
+  [] consider if/ else or case statement to handle how ASCII is displayed
+  [x] ALWAYS display previous correct guess handled by above output array
+  [x] WIN = output array == word_array && WIN = guess_number < length + 5
+  [x] Lose = output array != word_array || Lose > guess_number
+    [x] consider using loop < word_array.length + 2
+    [] will need iterator for guess_number
+
+
+We WANT to 
+[x] split the word into an array from FAKER
+      (x) a test word
+      (x) an intergration of FAKER
+[-] we the user to choose the category of words.
+[x] handle Faker compound words
+
+[x] we want to utilize FAKER to generate the words
+[x] display word when user loses
+
+TODO CARMEN will develop the option to take string
+TODO JOANNA will develop the ascii art 
