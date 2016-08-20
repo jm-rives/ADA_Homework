@@ -63,6 +63,8 @@ class Game
 
   end
 
+# TODO: jm-rives place bug methods here
+
 # assign the word based on the difficulty level
   def assignWord(level)
     if level == "1"
@@ -85,7 +87,8 @@ class Game
 end
 
 ####### MAIN PROGRAM #########
-#separate each letter into an array
+# Does this refer to the word returned by FAKER or the word the user guessess?
+#separate each letter into an array 
 def wordArray(guessword)
   word_array = []
 
@@ -95,6 +98,7 @@ def wordArray(guessword)
   return word_array
 end
 
+# Is the output array the array that shows the users correct guessess on the boardd? 
 #generate an output array with the same length as the word array
 def outputArray(word)
   Array.new(word.length, "_")
@@ -113,7 +117,7 @@ def prompt(output_array, unmatch_array, word)
 #verify if a string entered by the user is equal to the word
   if letter == word
     puts "You have won the game!"
-# TODO jm-rives enter ascii reward text here
+# TODO: jm-rives enter ascii reward text here
     exit
   end
 
@@ -140,6 +144,7 @@ def display(output_array)
   output_array.each do |i|
     print "#{i} "
   end
+# TODO jm-rives puts bug build and seg build here?
 end
 
 def match_letter(word_array, letter, output_array)
@@ -149,6 +154,7 @@ def match_letter(word_array, letter, output_array)
     end
   end
   return output_array
+# TODO jm_rives OR puts bug build here and seg build here, bind seg buiild to out put array length?
 end
 
 #generate an array for all the unmatched letters that the user entered
