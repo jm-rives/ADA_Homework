@@ -69,6 +69,7 @@ class Game
       begin
         @assignedword = Faker::Hipster.word
       end until @assignedword.length <= 6
+      # infinte loop if database without words > 8 letters
     elsif level == "2"
       begin
         @assignedword = Faker::Hipster.word
@@ -104,7 +105,6 @@ def prompt(output_array, unmatch_array, word)
   puts "\nGuess a letter."
   letter = gets.chomp.downcase
   if letter =~ /[A-Za-z]/ || letter == " "
-
   else
     puts "Incorrect input. Try again."
     prompt(output_array, unmatch_array, word)
@@ -113,6 +113,7 @@ def prompt(output_array, unmatch_array, word)
 #verify if a string entered by the user is equal to the word
   if letter == word
     puts "You have won the game!"
+# TODO jm-rives enter ascii reward text here
     exit
   end
 
@@ -123,10 +124,11 @@ def prompt(output_array, unmatch_array, word)
       prompt(output_array, unmatch_array, word)
     end
   end
+
 #verify if the user's guess has already been entered (in the unmatch_array)
   unmatch_array.each do |ea|
     if letter == ea
-      puts "This character has been entered."
+      puts "This character has already been entered."
       prompt(output_array, unmatch_array, word)
     end
   end
