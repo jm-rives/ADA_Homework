@@ -59,7 +59,8 @@ class Game
   attr_reader :word
 
   def initialize(level)
-    @word = assignWord(level)
+    @word = assignWord(level) 
+    # @word = 'joanna' # changed for testing purposes
 
 
   end
