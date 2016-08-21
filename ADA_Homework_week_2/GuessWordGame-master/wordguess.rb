@@ -202,7 +202,7 @@ while play == "y"
   ##################################################
   """
 
-  puts "Here is your companion catipillar"
+  puts "Here is your companion catipillar."
   basic_bug
 
   begin
@@ -239,7 +239,7 @@ while play == "y"
       display(unmatch_array)
       puts ""
     end
-
+# Produces winning ASCII output as desired
     if output_array === word_array
       puts "You have won the game!"
       basic_bug
@@ -249,9 +249,9 @@ while play == "y"
   end
 
   def dead_bug
-    puts bug_line_1 = " ----\\----/".colorize(:pink)
-    puts bug_line_2 = "/    \/ x x \\".colorize(:pink)
-    puts bug_line_3 = "l====L\__^__/".colorize(:pink)
+    puts bug_line_1 = " ----\\----/".colorize(:white)
+    puts bug_line_2 = "/    \/ x x \\".colorize(:white)
+    puts bug_line_3 = "l====L\__^__/".colorize(:white)
   end
 
   puts "\nYou lost!"
