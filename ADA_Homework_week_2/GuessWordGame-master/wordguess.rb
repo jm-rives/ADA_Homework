@@ -59,8 +59,8 @@ class Game
   attr_reader :word
 
   def initialize(level)
-    @word = assignWord(level) 
-    # @word = 'joanna' # changed for testing purposes
+    # @word = assignWord(level) 
+    @word = 'joanna' 
 
 
   end
@@ -117,9 +117,7 @@ def prompt(output_array, unmatch_array, word)
 
 #verify if a string entered by the user is equal to the word
   if letter == word
-    puts "You have won the game!"
-# TODO: jm-rives enter ascii reward text here
-
+    puts "You have won the game!"  
     exit
   end
 
@@ -148,6 +146,7 @@ def display(output_array)
   end
 # TODO jm-rives puts bug build and seg build here?
 end
+
 
 def match_letter(word_array, letter, output_array)
   word_array.length.times do |i|
@@ -258,6 +257,8 @@ while play == "y"
   puts "\nYou lost!"
   puts "Just look at your poor catipillar!"
   dead_bug
+  reward = word_array.size - unmatch_array.size
+  puts reward
   puts "The correct word is: #{(game.word).upcase}"
   puts "Do you want to try again? Enter \"y\" to play again."
   play = gets.chomp.downcase
