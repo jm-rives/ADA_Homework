@@ -52,7 +52,8 @@
 # Allow the user to choose their difficulty level: higher levels will have words or phrases with more letters. You determine the specific logic that will determine a low, medium, high level.
 # Allow the program to accept the whole word as input from the user. If the word is guessed correctly, the user will win. Otherwise, it will be treated as another guess.
 ################################################################
-require "faker"
+require 'faker'
+require 'colorize'
 
 class Game
   attr_reader :word
@@ -62,8 +63,6 @@ class Game
 
 
   end
-
-# TODO: jm-rives place bug methods here
 
 # assign the word based on the difficulty level
   def assignWord(level)
@@ -98,7 +97,7 @@ def wordArray(guessword)
   return word_array
 end
 
-# Is the output array the array that shows the users correct guessess on the boardd? 
+# Is the output array the array that shows the users correct guessess on the board? 
 #generate an output array with the same length as the word array
 def outputArray(word)
   Array.new(word.length, "_")
@@ -108,7 +107,8 @@ end
 def prompt(output_array, unmatch_array, word)
   puts "\nGuess a letter."
   letter = gets.chomp.downcase
-  if letter =~ /[A-Za-z]/ || letter == " "
+
+  if letter =~ /[A-Za-z]/ || letter == " " || letter == "-"
   else
     puts "Incorrect input. Try again."
     prompt(output_array, unmatch_array, word)
@@ -118,6 +118,7 @@ def prompt(output_array, unmatch_array, word)
   if letter == word
     puts "You have won the game!"
 # TODO: jm-rives enter ascii reward text here
+
     exit
   end
 
@@ -172,10 +173,37 @@ end
 
 ##### USER INTERFACE CODE #####
 
+# TODO: jm-rives place bug methods below this line
+def basic_bug
+  puts bug_line_1 = " ----\\----/".colorize(:green)
+  puts bug_line_2 = "/    \/ @ @ \\".colorize(:green)
+  puts bug_line_3 = "l====L\__v__/".colorize(:green)
+end
+
+def bug_segment(win, default=0)
+  reward = win - default
+  reward.times do
+  puts extend_bug_line_1 = " ---- ".colorize(:green)
+  puts extend_bug_line_2 = "/    \\".colorize(:green)
+  puts extend_bug_line_3 = "l====l".colorize(:green)
+  end
+end
+
 play = "y"
 
 while play == "y"
-  puts "Welcome to the Word Guess Game!"
+  puts 
+  """
+  ##################################################\n
+  Welcome to the Hipster Word Guess Game! 
+  Guess correctly and your catipillar grows strong. 
+  Guess incorrectly and your catipillar fails to thrive. 
+  And iff you lose ... so does the catipillar.
+  ##################################################
+  """
+
+  puts "Here is your companion catipillar"
+  basic_bug
 
   begin
     puts "Please enter the difficulty level (1, 2, 3)."
@@ -196,7 +224,7 @@ while play == "y"
   unmatch_array = []
 
   (word_array.length + 2).times do |chance|
-    puts "You have #{(word_array.length + 2)-chance} chance(s)."
+    puts "You have #{(word_array.length + 2) - chance} chance(s)."
     character = prompt(output_array, unmatch_array, game.word) # output_array and unmatch_array are passed to the method to keep track of all the characters that have been entered by the user. If a repeated character is entered, the user will not be penalized. The number of chances remain the same. The user is allowed to enter a string. If the string == the word, the user has won the game. "game.word" is passed to the method to verify if the string entered by the user is equal to the word.
     output_array = match_letter(word_array, character, output_array)
     print "Word: "
@@ -214,12 +242,31 @@ while play == "y"
 
     if output_array === word_array
       puts "You have won the game!"
+      basic_bug
+      bug_segment(word_array.size)
       exit
     end
   end
 
+  def dead_bug
+    puts bug_line_1 = " ----\\----/".colorize(:pink)
+    puts bug_line_2 = "/    \/ x x \\".colorize(:pink)
+    puts bug_line_3 = "l====L\__^__/".colorize(:pink)
+  end
+
   puts "\nYou lost!"
+  puts "Just look at your poor catipillar!"
+  dead_bug
   puts "The correct word is: #{(game.word).upcase}"
   puts "Do you want to try again? Enter \"y\" to play again."
   play = gets.chomp.downcase
 end
+
+# Some unexpeted output
+# TODO: EXTEND PROGRAM TO HANDLE non-alpha content from  :FAKER
+# Just look at your poor catipillar!
+#  ----\----/
+# /    / x x \
+# l====L__^__/
+# The correct word is: 90'S 
+
